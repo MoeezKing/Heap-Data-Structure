@@ -125,6 +125,32 @@ public:
         for (int i = 0; i < size; i++)
             arr[i] = h.Delete();
     }
+    void heapify(int arr[], int index,int size)
+    {
+        int max = index;
+        int left = leftChild(index);
+        int right = rightChild(index);
+
+        if ((left < size) && (arr[left] > arr[max]))
+            max = left;
+        if((right<size)&&(arr[right]>arr[max]))
+            max=right;
+        
+        if (max != index)
+        {
+            int temp = arr[max];        //swaping
+            arr[max] = arr[index];
+            arr[index] = temp;
+            
+            heapify(arr, max, size);
+        }
+
+    }
+    void heapify(int arr[], int size)//overloading
+    {
+        for (int i = (size/2- 1); i >=0 ; i--)//optimizing
+            heapify(arr, i, size);
+    }
 };
 int main()
 {
@@ -150,6 +176,12 @@ int main()
     for (int i = 0; i <= 9; i++)
         cout << arr[i] << "\t";
 
+    int arr1[5] = {3, 2, 1, 4, 5};
+    h1.heapify(arr1, 5);
 
+    cout << endl;
+    for (int i = 0; i <= 4; i++)
+        cout << arr1[i] << "\t";
+    
     return 0;
 }
