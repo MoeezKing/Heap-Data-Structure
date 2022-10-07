@@ -107,7 +107,7 @@ public:
                 cout << heap[i] << "\t";
     }
 
-    void ascending(int arr [], int size)
+    void ascending(int arr [], int size)//Heap sort
     {
         MaxHeap h(size);
         for (int i = 0; i < size; i++)
@@ -116,7 +116,7 @@ public:
         for (int i = size - 1; i >= 0; i--)
             arr[i] =h.Delete();
     }
-    void descending(int arr[], int size)
+    void descending(int arr[], int size)//Heap sort
     {
         MaxHeap h(size);
         for (int i = 0; i < size; i++)
