@@ -151,6 +151,31 @@ public:
         for (int i = (size/2- 1); i >=0 ; i--)//optimizing
             heapify(arr, i, size);
     }
+     int kLargestNumber(int k)//it will  return the kth largest value 
+    
+         if (k == 0 || k>heapSize)
+            return -9999;
+    
+        if (k == 1)
+        {
+            int num = Delete();
+            insert(num);
+            return num;
+        }
+        int* arr = new int[k-1];
+        int num;
+        
+        for (int i = 0; i <= k - 2; i++)
+            arr[i] = Delete();
+
+        num = Delete();
+        insert(num);
+
+        for (int i = 0; i <= k - 2; i++)
+            insert(arr[i]);
+        delete arr;
+        return num;
+    }
 };
 int main()
 {
@@ -182,6 +207,7 @@ int main()
     cout << endl;
     for (int i = 0; i <= 4; i++)
         cout << arr1[i] << "\t";
+    cout << endl << h1.kLargestNumber(2);
     
     return 0;
 }
